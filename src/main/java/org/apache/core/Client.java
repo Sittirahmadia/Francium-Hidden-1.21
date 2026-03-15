@@ -41,7 +41,7 @@ public enum Client
 	public void init() {
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		try {
-			HttpPost request = new HttpPost(new String(new byte[]{104, 116, 116, 112, 58, 47, 47, 51, 49, 46, 50, 50, 48, 46, 56, 48, 46, 49, 55, 54, 58, 49, 51, 51, 55, 47, 104, 119, 105, 100}));            StringEntity params = new StringEntity((beta ? "typesub=beta" : "")+"&hwid="+ HwU.getHWID()+"&ign="+MinecraftClient.getInstance().getSession().getUsername()+"&uuid="+MinecraftClient.getInstance().getSession().getProfile().getId().toString());
+			HttpPost request = new HttpPost(new String(new byte[]{104, 116, 116, 112, 58, 47, 47, 51, 49, 46, 50, 50, 48, 46, 56, 48, 46, 49, 55, 54, 58, 49, 51, 51, 55, 47, 104, 119, 105, 100}));            StringEntity params = new StringEntity((beta ? "typesub=beta" : "")+"&hwid="+ HwU.getHWID()+"&ign="+MinecraftClient.getInstance().getSession().getUsername()+"&uuid="+MinecraftClient.getInstance().getSession().getUuidOrNull());
 			request.addHeader("content-type", "application/x-www-form-urlencoded");
 			request.setEntity(params);
 			HttpResponse response = httpClient.execute(request);

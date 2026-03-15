@@ -116,7 +116,7 @@ public class SC extends C {
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
             IFont.COMFORTAA.drawString(matrices, display, (float) (x + width - 20), (float) y, new Color(255, 255, 255).getRGB(), false);
         } else {
-            MC.textRenderer.drawWithShadow(matrices, net.minecraft.text.Text.literal(display), (float) (x + width - 20), (float) y, 0xffffff);
+            new net.minecraft.client.gui.DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers()).drawText(MC.textRenderer, display, (int)(x + width - 20), (int)y, 0xffffff, true);
         }
     }
 

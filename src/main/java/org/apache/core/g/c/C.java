@@ -46,7 +46,7 @@ public abstract class C {
             IFont.COMFORTAA.drawString(matrices, name, (float) x, (float) y, new Color(255, 255, 255).getRGB(), false);
         } else {
             String trimmedName = MC.textRenderer.trimToWidth(name, (int)(parentX2 - x));
-            MC.textRenderer.drawWithShadow(matrices, net.minecraft.text.Text.literal(trimmedName), (float) x, (float) y, 0xFFFFFF);
+            new net.minecraft.client.gui.DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers()).drawText(MC.textRenderer, trimmedName, (int)x, (int)y, 0xFFFFFF, true);
         }
 
     }

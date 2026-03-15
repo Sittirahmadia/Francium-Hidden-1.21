@@ -52,7 +52,7 @@ public class BC extends C {
             RenderSystem.setShaderColor((float) 1.0f, (float) 1.0f, (float) 1.0f, 1.0f);
             IFont.COMFORTAA.drawString(matrices, display.get(), (float) (x + 1.5f), (float) (y + 1), 0xffffff, false);
         } else {
-            MC.textRenderer.drawWithShadow(matrices, net.minecraft.text.Text.literal(display.get()), (float) x+1.5f, (float) y+1, 0xffffff);
+            new net.minecraft.client.gui.DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers()).drawText(MC.textRenderer, display.get(), (int)(x+1.5f), (int)(y+1), 0xffffff, true);
         }
     }
 

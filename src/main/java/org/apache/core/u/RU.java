@@ -185,13 +185,14 @@ public class RU {
 	}
 
 	public static void typeCentered(MatrixStack stack, String text, int centerX, int y, int color) {
-		MC.textRenderer.drawWithShadow(stack, net.minecraft.text.Text.literal(text), centerX - MC.textRenderer.getWidth(text) / 2, y, color);
+		net.minecraft.client.gui.DrawContext ctx = new net.minecraft.client.gui.DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers());
+		ctx.drawText(MC.textRenderer, text, centerX - MC.textRenderer.getWidth(text) / 2, y, color, true);
 	}
 
 	public static void typeCenteredTrimmed(MatrixStack stack, String text, float centerX, float y, int maxWidth, int color) {
-		// drawTrimmed removed in 1.20+; render truncated text manually
 		String trimmed = MC.textRenderer.trimToWidth(text, maxWidth);
-		MC.textRenderer.drawWithShadow(stack, net.minecraft.text.Text.literal(trimmed), (int) centerX - MC.textRenderer.getWidth(trimmed) / 2, (int) y, color);
+		net.minecraft.client.gui.DrawContext ctx = new net.minecraft.client.gui.DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers());
+		ctx.drawText(MC.textRenderer, trimmed, (int) centerX - MC.textRenderer.getWidth(trimmed) / 2, (int) y, color, true);
 	}
 
 	public static String getKeyName(int keyCode) {

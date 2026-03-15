@@ -105,7 +105,7 @@ public class W {
                 RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
                 IFont.COMFORTAA.drawString(matrices, "x", (float) (x + 1f),  (float) (y), new Color(255, 255, 255).getRGB(), false);
             } else {
-                textRenderer.drawWithShadow(matrices, net.minecraft.text.Text.literal("x"), (float) (x + 2.5f), (float) y, 0xFFFFFFFF);
+                new net.minecraft.client.gui.DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers()).drawText(textRenderer, "x", (int)(x + 2.5f), (int)y, 0xFFFFFFFF, true);
             }
 
             GL11.glEnable(GL11.GL_CULL_FACE);
@@ -117,7 +117,7 @@ public class W {
             double x = getX() + width - 12;
             double y = getY() + 2;
 
-            textRenderer.drawWithShadow(matrices, net.minecraft.text.Text.literal(minimized ? "-" : "+"), (float) (x + 1), (float) (y + 2), 0xFFFFFFFF);
+            new net.minecraft.client.gui.DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers()).drawText(textRenderer, minimized ? "-" : "+", (int)(x + 1), (int)(y + 2), 0xFFFFFFFF, true);
         }
 
 
