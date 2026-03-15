@@ -53,9 +53,9 @@ public class MCP extends M implements PlayerTickListener {
         if (GLFW.glfwGetMouseButton(MC.getWindow().getHandle(), GLFW.GLFW_MOUSE_BUTTON_3) == GLFW.GLFW_PRESS && !isMiddleClicking) {
             isMiddleClicking = true;
             if (includePrefix.get()) {
-                CU.plainMessageWithPrefix(target.getEntityName() + "'s ping is " + getPing(target));
+                CU.plainMessageWithPrefix(target.getName().getString() + "'s ping is " + getPing(target));
             } else {
-                CU.sendPlainMessage(target.getEntityName() + "'s ping is " + getPing(target));
+                CU.sendPlainMessage(target.getName().getString() + "'s ping is " + getPing(target));
             }
         }
         if (GLFW.glfwGetMouseButton(MC.getWindow().getHandle(), GLFW.GLFW_MOUSE_BUTTON_3) == GLFW.GLFW_RELEASE && isMiddleClicking) {

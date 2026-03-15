@@ -56,7 +56,7 @@ public class RU {
 	{
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
-		RenderSystem.setShader(GameRenderer::getPositionProgram);
+		RenderSystem.setShader(ShaderProgramKeys.POSITION);
 		fillBox(bufferBuilder, bb, matrixStack);
 		BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
 	}
@@ -123,7 +123,7 @@ public class RU {
 	{
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);
-		RenderSystem.setShader(GameRenderer::getPositionProgram);
+		RenderSystem.setShader(ShaderProgramKeys.POSITION);
 		fillOutlinedBox(bufferBuilder, bb, matrixStack);
 		BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
 	}
@@ -133,7 +133,7 @@ public class RU {
 		Matrix4f matrix = matrixStack.peek().getPositionMatrix();
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
-		RenderSystem.setShader(GameRenderer::getPositionProgram);
+		RenderSystem.setShader(ShaderProgramKeys.POSITION);
 
 		bufferBuilder.vertex(matrix, x1, y2, 0);
 		bufferBuilder.vertex(matrix, x2, y2, 0);
@@ -153,7 +153,7 @@ public class RU {
 		Matrix4f matrix = matrixStack.peek().getPositionMatrix();
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);
-		RenderSystem.setShader(GameRenderer::getPositionProgram);
+		RenderSystem.setShader(ShaderProgramKeys.POSITION);
 
 		bufferBuilder.vertex(matrix, x1, y2, 0);
 		bufferBuilder.vertex(matrix, x2, y2, 0);

@@ -1,6 +1,10 @@
 package org.apache.core.u;
 
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.PotionContentsComponent;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -66,4 +70,22 @@ public enum IU
 	{
 		return countItem(i -> i == item);
 	}
+
+	public static int findSplashHealthPotion() {
+		PlayerInventory inv = MC.player.getInventory();
+		for (int i = 0; i < 9; i++) {
+			ItemStack stack = inv.getStack(i);
+			if (isSplashHealthPotion(stack)) return i;
+		}
+		return -1;
+	}
+
+	public static boolean isSplashHealthPotion(ItemStack stack) {
+		if (!stack.isOf(Items.SPLASH_POTION)) return false;
+		PotionContentsComponent contents = stack.get(DataComponentTypes.POTION_CONTENTS);
+		if (contents == null) return false;
+		return contents.getEffects().stream()
+			.anyMatch(e -> e.getEffectType().value() == StatusEffects.INSTANT_HEALTH.value());
+	}
+
 }

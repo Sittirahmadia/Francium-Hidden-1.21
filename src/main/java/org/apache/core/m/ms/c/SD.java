@@ -35,17 +35,11 @@ public class SD extends M {
         Client.INSTANCE.panic();
 
         System.gc();
-        System.runFinalization();
         System.gc();
-        System.runFinalization();
         System.gc();
-        System.runFinalization();
         System.gc();
-        System.runFinalization();
         System.gc();
-        System.runFinalization();
         System.gc();
-        System.runFinalization();
     }
 
 }

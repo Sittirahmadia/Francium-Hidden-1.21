@@ -7,6 +7,7 @@ import org.apache.core.u.RU;
 import org.apache.core.Client;
 import org.apache.core.g.w.W;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.gl.ShaderProgramKeys;
 import net.minecraft.client.util.math.MatrixStack;
 import org.lwjgl.glfw.GLFW;
 
@@ -42,7 +43,7 @@ public class BC extends C {
             return;
         if (parentY2 - (getY() + parentY) <= 0)
             return;
-        RenderSystem.setShader(GameRenderer::getPositionProgram);
+        RenderSystem.setShader(ShaderProgramKeys.POSITION);
         RenderSystem.setShaderColor(0.1f, 0.1f, 0.1f, 0.4f);
         if (RU.isHoveringOver(mouseX, mouseY, x, y, x2, y2))
             RenderSystem.setShaderColor(0.15f, 0.15f, 0.15f, 1.0f);
@@ -52,7 +53,7 @@ public class BC extends C {
             RenderSystem.setShaderColor((float) 1.0f, (float) 1.0f, (float) 1.0f, 1.0f);
             IFont.COMFORTAA.drawString(matrices, display.get(), (float) (x + 1.5f), (float) (y + 1), 0xffffff, false);
         } else {
-            MC.textRenderer.draw(matrices, display.get(), (float) x+1.5f, (float) y+1, 0xffffff);
+            MC.textRenderer.drawWithShadow(matrices, display.get(), (float) x+1.5f, (float) y+1, 0xffffff);
         }
     }
 

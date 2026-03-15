@@ -86,7 +86,7 @@ public class AP extends M implements PlayerTickListener {
                 return;
             }
 
-            int slot = IU.findSplash(6, 1, 1);
+            int slot = IU.findSplashHealthPotion();
             ItemStack mainHandStack = MC.player.getMainHandStack();
 
 
@@ -96,7 +96,7 @@ public class AP extends M implements PlayerTickListener {
                         || mainHandStack.isOf(Items.DIAMOND_SWORD)
                         || mainHandStack.isOf(Items.IRON_SWORD)
                         || mainHandStack.isOf(Items.AIR)
-                        || IU.isThatSplash(6, 1, 1, mainHandStack))) {
+                        || IU.isSplashHealthPotion(mainHandStack))) {
                 if (this.clock != 0) {
                     return;
                 }
