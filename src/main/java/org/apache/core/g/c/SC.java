@@ -8,7 +8,6 @@ import org.apache.core.u.RU;
 import org.apache.core.Client;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.gl.ShaderProgramKeys;
 import net.minecraft.client.util.math.MatrixStack;
 import org.lwjgl.glfw.GLFW;
 
@@ -62,7 +61,7 @@ public class SC extends C {
             return;
         if (parentY2 - (getY() + parentY) <= 0)
             return;
-        RenderSystem.setShader(ShaderProgramKeys.POSITION);
+        RenderSystem.setShader(GameRenderer::getPositionProgram);
         RenderSystem.setShaderColor(0.6f, 0.6f, 0.6f, 1.0f);
         RU.drawQuad(x, y + 4.5f, x + width, y + 5f, matrices);
     }
@@ -86,7 +85,7 @@ public class SC extends C {
             return;
         if (parentY2 - (getY() + parentY) <= 0)
             return;
-        RenderSystem.setShader(ShaderProgramKeys.POSITION);
+        RenderSystem.setShader(GameRenderer::getPositionProgram);
         RenderSystem.setShaderColor(0.4f, 0.4f, 0.4f, 1.0f);
         if (availability.get())
             RenderSystem.setShaderColor((float) r, (float) g, (float) b, 1.0f);

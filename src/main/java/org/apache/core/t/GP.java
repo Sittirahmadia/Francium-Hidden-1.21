@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 import org.lwjgl.BufferUtils;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gl.ShaderProgramKeys;
+import net.minecraft.client.render.GameRenderer;
 
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
@@ -164,7 +164,7 @@ public class GP {
 		float height = glyph.height;
 
 		Tessellator tessellator = Tessellator.getInstance();
-		RenderSystem.setShader(ShaderProgramKeys.POSITION_COLOR_TEX);
+		RenderSystem.setShader(GameRenderer::getPositionColorTexProgram);
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR_TEXTURE);
 
 		bufferBuilder.vertex(stack.peek().getPositionMatrix(), x, y + height, 0).color(red, green, blue, alpha).texture(pageX, pageY + pageHeight);

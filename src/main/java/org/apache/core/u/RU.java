@@ -1,6 +1,7 @@
 package org.apache.core.u;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
@@ -56,7 +57,7 @@ public class RU {
 	{
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
-		RenderSystem.setShader(ShaderProgramKeys.POSITION);
+		RenderSystem.setShader(GameRenderer::getPositionProgram);
 		fillBox(bufferBuilder, bb, matrixStack);
 		BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
 	}
@@ -123,7 +124,7 @@ public class RU {
 	{
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);
-		RenderSystem.setShader(ShaderProgramKeys.POSITION);
+		RenderSystem.setShader(GameRenderer::getPositionProgram);
 		fillOutlinedBox(bufferBuilder, bb, matrixStack);
 		BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
 	}
@@ -133,7 +134,7 @@ public class RU {
 		Matrix4f matrix = matrixStack.peek().getPositionMatrix();
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
-		RenderSystem.setShader(ShaderProgramKeys.POSITION);
+		RenderSystem.setShader(GameRenderer::getPositionProgram);
 
 		bufferBuilder.vertex(matrix, x1, y2, 0);
 		bufferBuilder.vertex(matrix, x2, y2, 0);
@@ -153,7 +154,7 @@ public class RU {
 		Matrix4f matrix = matrixStack.peek().getPositionMatrix();
 		Tessellator tessellator = Tessellator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION);
-		RenderSystem.setShader(ShaderProgramKeys.POSITION);
+		RenderSystem.setShader(GameRenderer::getPositionProgram);
 
 		bufferBuilder.vertex(matrix, x1, y2, 0);
 		bufferBuilder.vertex(matrix, x2, y2, 0);
