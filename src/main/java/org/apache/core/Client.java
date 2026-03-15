@@ -12,7 +12,7 @@ import org.apache.core.c.CDT;
 import org.apache.core.c.PAS;
 import org.apache.core.c.Ro;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.Session;
+import net.minecraft.client.session.Session;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
