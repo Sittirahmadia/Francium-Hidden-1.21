@@ -164,8 +164,8 @@ public class GP {
 		float height = glyph.height;
 
 		Tessellator tessellator = Tessellator.getInstance();
-		RenderSystem.setShader(GameRenderer::getPositionColorTexProgram);
-		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR_TEXTURE);
+		RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+		BufferBuilder bufferBuilder = tessellator.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE_COLOR);
 
 		bufferBuilder.vertex(stack.peek().getPositionMatrix(), x, y + height, 0).color(red, green, blue, alpha).texture(pageX, pageY + pageHeight);
 		bufferBuilder.vertex(stack.peek().getPositionMatrix(), x + width, y + height, 0).color(red, green, blue, alpha).texture(pageX + pageWidth, pageY + pageHeight);

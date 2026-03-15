@@ -84,8 +84,10 @@ public enum IU
 		if (!stack.isOf(Items.SPLASH_POTION)) return false;
 		PotionContentsComponent contents = stack.get(DataComponentTypes.POTION_CONTENTS);
 		if (contents == null) return false;
-		return contents.getEffects().stream()
-			.anyMatch(e -> e.getEffectType().value() == StatusEffects.INSTANT_HEALTH.value());
+		for (net.minecraft.entity.effect.StatusEffectInstance e : contents.getEffects()) {
+			if (e.getEffectType().value() == StatusEffects.INSTANT_HEALTH.value()) return true;
+		}
+		return false;
 	}
 
 }

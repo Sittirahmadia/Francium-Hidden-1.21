@@ -6,7 +6,6 @@ import org.apache.core.m.ms.c.CG;
 import org.apache.core.t.IFont;
 import org.apache.core.Client;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.Text;
 
 import java.awt.*;
 
@@ -46,7 +45,8 @@ public abstract class C {
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
             IFont.COMFORTAA.drawString(matrices, name, (float) x, (float) y, new Color(255, 255, 255).getRGB(), false);
         } else {
-            MC.textRenderer.drawTrimmed(matrices, Text.literal(name), (int) x, (int) y, (int) (parentX2 - x), 0xFFFFFF);
+            String trimmedName = MC.textRenderer.trimToWidth(name, (int)(parentX2 - x));
+            MC.textRenderer.drawWithShadow(matrices, net.minecraft.text.Text.literal(trimmedName), (float) x, (float) y, 0xFFFFFF);
         }
 
     }

@@ -54,7 +54,7 @@ public enum DU
 		double damage = ((impact * impact + impact) / 2 * 7 * (6 * 2) + 1);
 
 		damage = getDamageForDifficulty(damage);
-		damage = DamageUtil.getDamageLeft((float) damage, (float) player.getArmor(), (float) player.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue());
+		damage = DamageUtil.getDamageLeft(player, (float) damage, MC.world.getDamageSources().generic(), (float) player.getArmor(), (float) player.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue());
 		damage = resistanceReduction(player, damage);
 
 		((IExplosion) explosion).set(crystal, 6, false);
@@ -99,7 +99,7 @@ public enum DU
 		damage = resistanceReduction(entity, damage);
 
 		// Reduce by armour
-		damage = DamageUtil.getDamageLeft((float) damage, (float) entity.getArmor(), (float) entity.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue());
+		damage = DamageUtil.getDamageLeft(entity, (float) damage, MC.world.getDamageSources().generic(), (float) entity.getArmor(), (float) entity.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue());
 
 		// Reduce by enchants
 		damage = normalProtReduction(entity, damage);
@@ -126,7 +126,7 @@ public enum DU
 		damage = resistanceReduction(player, damage);
 
 		// Reduce by armour
-		damage = DamageUtil.getDamageLeft((float) damage, (float) player.getArmor(), (float) player.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue());
+		damage = DamageUtil.getDamageLeft(player, (float) damage, MC.world.getDamageSources().generic(), (float) player.getArmor(), (float) player.getAttributeInstance(EntityAttributes.GENERIC_ARMOR_TOUGHNESS).getValue());
 
 		// Reduce by enchants
 		((IExplosion) explosion).set(bed, 5, true);

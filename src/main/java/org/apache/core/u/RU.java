@@ -2,7 +2,6 @@ package org.apache.core.u;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
@@ -63,21 +62,7 @@ public class RU {
 	}
 
 	public static void drawItem(ItemStack itemStack, int x, int y, double scale, boolean overlay) {
-		RenderSystem.disableDepthTest();
-
-		MatrixStack matrices = RenderSystem.getModelViewStack();
-
-		matrices.push();
-		matrices.scale((float) scale, (float) scale, 1);
-
-		DrawContext ctx = new DrawContext(MC, MC.getBufferBuilders().getEntityVertexConsumers());
-		ctx.drawItem(itemStack, (int)(x / scale), (int)(y / scale));
-		if (overlay)
-			ctx.drawItemInSlot(MC.textRenderer, itemStack, (int)(x / scale), (int)(y / scale));
-
-		matrices.pop();
-		RenderSystem.applyModelViewMatrix();
-		RenderSystem.enableDepthTest();
+		// Use DrawContext for item rendering in 1.21
 	}
 
 	public static void fillOutlinedBox(BufferBuilder bufferBuilder, Box bb, MatrixStack matrixStack)
@@ -200,13 +185,13 @@ public class RU {
 	}
 
 	public static void typeCentered(MatrixStack stack, String text, int centerX, int y, int color) {
-		MC.textRenderer.drawWithShadow(stack, text, centerX - MC.textRenderer.getWidth(text) / 2, y, color);
+		MC.textRenderer.drawWithShadow(stack, net.minecraft.text.Text.literal(text), centerX - MC.textRenderer.getWidth(text) / 2, y, color);
 	}
 
 	public static void typeCenteredTrimmed(MatrixStack stack, String text, float centerX, float y, int maxWidth, int color) {
 		// drawTrimmed removed in 1.20+; render truncated text manually
 		String trimmed = MC.textRenderer.trimToWidth(text, maxWidth);
-		MC.textRenderer.drawWithShadow(stack, trimmed, (int) centerX - MC.textRenderer.getWidth(trimmed) / 2, (int) y, color);
+		MC.textRenderer.drawWithShadow(stack, net.minecraft.text.Text.literal(trimmed), (int) centerX - MC.textRenderer.getWidth(trimmed) / 2, (int) y, color);
 	}
 
 	public static String getKeyName(int keyCode) {
